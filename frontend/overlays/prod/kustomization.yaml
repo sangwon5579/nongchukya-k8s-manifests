@@ -3,8 +3,14 @@ resources:
 images:
   - name: sangwon0410/nongchukya-frontend
     newTag: "53"
-# 초기 라우팅(blue)
+
 patchesStrategicMerge:
-  - patch-service-blue.yaml
-# 전환 시 아래로 바꾸기
-#  - patch-service-green.yaml
+  - patch-service-blue.yaml       
+  - patch-replicas-blue-1.yaml    
+  - patch-replicas-green-0.yaml   
+
+# green으로 전환
+# patchesStrategicMerge:
+#   - patch-service-green.yaml
+#   - patch-replicas-blue-0.yaml
+#   - patch-replicas-green-1.yaml

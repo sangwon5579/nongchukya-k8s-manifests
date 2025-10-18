@@ -4,10 +4,10 @@ resources:
   - backend-config.yaml
 images:
   - name: sangwon0410/nongchukya-backend
-    newTag: "53"
+    newTag: "54"
 # 초기엔 blue로 라우팅
 patchesStrategicMerge:
   - patch-service-blue.yaml
   #  - patch-service-green.yaml
-  - patch-deploy-env-blue.yaml 
+  - patch-deploy-env-blue.yaml
   - patch-deploy-env-green.yaml

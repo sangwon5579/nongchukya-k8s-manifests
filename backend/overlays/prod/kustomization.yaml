@@ -4,12 +4,11 @@ resources:
   - backend-config.yaml
 images:
   - name: sangwon0410/nongchukya-backend
-    newTag: "63"
+    newTag: "64"
 patchesStrategicMerge:
-  - patch-service-blue.yaml     
-  - patch-replicas-blue-1.yaml    
-  - patch-replicas-green-0.yaml   
-
+  - patch-service-blue.yaml
+  - patch-replicas-blue-1.yaml
+  - patch-replicas-green-0.yaml
 # green으로 전환
 # patchesStrategicMerge:
 #   - patch-service-green.yaml

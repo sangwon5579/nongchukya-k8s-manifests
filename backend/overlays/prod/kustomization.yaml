@@ -1,13 +1,12 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-
-namespace: nongchukya
-bases:
+resources:
   - ../../base
-
-patches:
-  - path: patch-env.yaml
 
 images:
   - name: sangwon0410/nongchukya-backend
-    newTag: "1"   # Jenkins가 빌드마다 이 숫자/해시로 자동 치환 커밋
+    newTag: latest        # ← Jenkins가 빌드 번호(1,2,3…)로 여길 바꿔줌
+
+# 초기엔 blue로 라우팅
+patchesStrategicMerge:
+  - patch-service-blue.yaml
+# green으로 전환하려면 위 주석 바꾸고 아래 줄을 켜면 됨
+#  - patch-service-green.yaml

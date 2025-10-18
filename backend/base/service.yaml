@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  type: ClusterIP
+  selector:               # ← overlay에서 blue/green으로 패치함
+    app: backend
+    color: blue
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080

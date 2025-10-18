@@ -1,12 +1,4 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-namespace: nongchukya
-
 resources:
-  - rollout.yaml
-  - service-stable.yaml
-  - service-preview.yaml
-
-images:
-  - name: sangwon0410/nongchukya-frontend
-    newTag: latest
+  - deploy-blue.yaml
+  - deploy-green.yaml
+  - service.yaml

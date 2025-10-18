@@ -10,13 +10,13 @@ resources:
 
 images:
   - name: sangwon0410/nongchukya-backend
-    newTag: "63"
+    newTag: "64"
 
 patchesStrategicMerge:
   - patch-deploy-env-blue.yaml
   - patch-deploy-env-green.yaml
 
-  # 트래픽/레플리카 제어: 지금은 green 활성화
+
   - patch-service-green.yaml
   - patch-replicas-blue-0.yaml
   - patch-replicas-green-1.yaml
@@ -25,6 +25,4 @@ patchesStrategicMerge:
   # - patch-service-blue.yaml     
   # - patch-replicas-blue-1.yaml    
   # - patch-replicas-green-0.yaml   
-
-
 

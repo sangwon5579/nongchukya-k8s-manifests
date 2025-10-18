@@ -8,5 +8,7 @@ spec:
       containers:
       - name: app
         envFrom:
-        - secretRef:
-            name: backend-secret
+          - configMapRef:
+              name: backend-config
+          - secretRef:
+              name: backend-secret

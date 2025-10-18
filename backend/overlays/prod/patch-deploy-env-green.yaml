@@ -13,6 +13,8 @@ spec:
           - secretRef:
               name: backend-secret
         env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: "docker"
           - name: JAVA_TOOL_OPTIONS
             value: "-Dspring.profiles.active=docker"
         args:

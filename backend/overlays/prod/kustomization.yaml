@@ -1,17 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: default
+
 resources:
   - ../../base
   - backend-secret.sealed.yaml
   - backend-config.yaml
+
 images:
   - name: sangwon0410/nongchukya-backend
     newTag: "63"
-patchesStrategicMerge:
-  - patch-service-blue.yaml     
-  - patch-replicas-blue-1.yaml    
-  - patch-replicas-green-0.yaml   
 
-# green으로 전환
-# patchesStrategicMerge:
-#   - patch-service-green.yaml
-#   - patch-replicas-blue-0.yaml
-#   - patch-replicas-green-1.yaml
+patchesStrategicMerge:
+  - patch-deploy-env-blue.yaml
+  - patch-deploy-env-green.yaml
+
+  # 트래픽/레플리카 제어: 지금은 green 활성화
+  - patch-service-green.yaml
+  - patch-replicas-blue-0.yaml
+  - patch-replicas-green-1.yaml
+
+
+  # - patch-service-blue.yaml     
+  # - patch-replicas-blue-1.yaml    
+  # - patch-replicas-green-0.yaml   
+
+
+

@@ -10,10 +10,12 @@ spec:
         envFrom:
           - configMapRef:
               name: backend-config
-        env:
-          - name: JAVA_TOOL_OPTIONS
-            value: "-Dspring.profiles.active=docker"
           - secretRef:
               name: backend-secret
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: "docker"
+          - name: JAVA_TOOL_OPTIONS
+            value: "-Dspring.profiles.active=docker"
         args:
           - "--spring.profiles.active=docker"

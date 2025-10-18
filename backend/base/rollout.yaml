@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: backend
+  namespace: nongchukya
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: app
+          image: sangwon0410/nongchukya-backend:latest  #오버레이에서 tag 교체
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: docker
+          # 필요시 Secret/ConfigMap
+          # envFrom:
+          #   - secretRef: { name: backend-secret }
+          #   - configMapRef: { name: backend-config }
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+  strategy:
+    blueGreen:
+      activeService: backend-stable
+      previewService: backend-preview
+      autoPromotionEnabled: false
+      scaleDownDelaySeconds: 30

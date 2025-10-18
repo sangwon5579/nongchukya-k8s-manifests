@@ -3,7 +3,7 @@ resources:
 
 images:
   - name: sangwon0410/nongchukya-backend
-    newTag: latest        # ← Jenkins가 빌드 번호(1,2,3…)로 여길 바꿔줌
+    newTag: latest
 
 # 초기엔 blue로 라우팅
 patchesStrategicMerge:

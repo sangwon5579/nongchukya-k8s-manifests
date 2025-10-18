@@ -3,7 +3,7 @@ resources:
 
 images:
   - name: sangwon0410/nongchukya-frontend
-    newTag: latest         # ← Jenkins가 여기 태그를 새 버전으로 바꿔줌
+    newTag: latest        
 
 # 초기 라우팅(blue)
 patchesStrategicMerge:

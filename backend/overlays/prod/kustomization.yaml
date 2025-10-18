@@ -1,28 +1,19 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-
 namespace: default
-
 resources:
   - ../../base
   - backend-secret.sealed.yaml
   - backend-config.yaml
-
 images:
   - name: sangwon0410/nongchukya-backend
-    newTag: "64"
-
+    newTag: "65"
 patchesStrategicMerge:
   - patch-deploy-env-blue.yaml
   - patch-deploy-env-green.yaml
-
-
   - patch-service-green.yaml
   - patch-replicas-blue-0.yaml
   - patch-replicas-green-1.yaml
-
-
-  # - patch-service-blue.yaml     
-  # - patch-replicas-blue-1.yaml    
-  # - patch-replicas-green-0.yaml   
-
+# - patch-service-blue.yaml     
+# - patch-replicas-blue-1.yaml    
+# - patch-replicas-green-0.yaml   

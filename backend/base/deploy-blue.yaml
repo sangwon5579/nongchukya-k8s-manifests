@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: sangwon0410/nongchukya-backend:latest   # ← tag는 overlay에서 바꿈
+        image: sangwon0410/nongchukya-backend:latest
         imagePullPolicy: IfNotPresent
         resources:
           requests:
@@ -30,7 +30,9 @@ spec:
             memory: "512Mi"
         ports:
         - containerPort: 8080
-        # 필요하면 환경변수/프로브 추가
+        envFrom:
+          - secretRef:
+              name: backend-secret
         readinessProbe:
           httpGet:
             path: /actuator/health/readiness
@@ -43,3 +45,5 @@ spec:
             port: 8080
           initialDelaySeconds: 40
           periodSeconds: 10
+
+

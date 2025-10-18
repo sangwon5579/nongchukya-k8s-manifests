@@ -30,6 +30,9 @@ spec:
             memory: "512Mi"
         ports:
         - containerPort: 8080
+        envFrom:
+          - secretRef:
+              name: backend-secret
         readinessProbe:
           httpGet:
             path: /actuator/health/readiness

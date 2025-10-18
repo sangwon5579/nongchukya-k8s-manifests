@@ -1,12 +1,12 @@
 resources:
   - ../../base
-  - backend-secret.sealed.yaml 
+  - backend-secret.sealed.yaml
 images:
   - name: sangwon0410/nongchukya-backend
-    newTag: "51"
+    newTag: "52"
 # 초기엔 blue로 라우팅
 patchesStrategicMerge:
   - patch-service-blue.yaml
-#  - patch-service-green.yaml
-  - patch-deploy-env-blue.yaml   # ← 추가(blue 사용 시)
+  #  - patch-service-green.yaml
+  - patch-deploy-env-blue.yaml # ← 추가(blue 사용 시)
 # - patch-deploy-env-green.yaml

@@ -2,7 +2,7 @@ resources:
   - ../../base
 images:
   - name: sangwon0410/nongchukya-frontend
-    newTag: "51"
+    newTag: "52"
 # 초기 라우팅(blue)
 patchesStrategicMerge:
   - patch-service-blue.yaml

@@ -10,13 +10,13 @@ images:
     newTag: "67"
 patchesStrategicMerge:
   
-  - patch-deploy-env-green.yaml
-  - patch-service-green.yaml
-  - patch-replicas-blue-0.yaml
-  - patch-replicas-green-1.yaml
+  # - patch-deploy-env-green.yaml
+  # - patch-service-green.yaml
+  # - patch-replicas-blue-0.yaml
+  # - patch-replicas-green-1.yaml
 
-  
-  # - patch-deploy-env-blue.yaml
-  # - patch-service-blue.yaml     
-  # - patch-replicas-blue-1.yaml    
-  # - patch-replicas-green-0.yaml   
+
+  - patch-deploy-env-blue.yaml
+  - patch-service-blue.yaml     
+  - patch-replicas-blue-1.yaml    
+  - patch-replicas-green-0.yaml   

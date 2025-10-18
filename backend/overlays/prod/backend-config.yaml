@@ -3,11 +3,12 @@ kind: ConfigMap
 metadata:
   name: backend-config
 data:
-  SPRING_PROFILES_ACTIVE: "docker"
-  SPRING_DATASOURCE_URL: "jdbc:mariadb://mariadb.default.svc.cluster.local:3306/matchingdb?useUnicode=true&characterEncoding=utf8"
-  SPRING_DATASOURCE_USERNAME: "beyond"
-  SPRING_DATA_REDIS_HOST: "redis.default.svc.cluster.local"
-  SPRING_DATA_REDIS_PORT: "6379"
   SERVER_PORT: "8080"
+  SPRING_PROFILES_ACTIVE: docker
+  SPRING_DATASOURCE_URL: jdbc:mariadb://mariadb-service.default.svc.cluster.local:3306/matchingdb?useUnicode=true&characterEncoding=utf8
+  SPRING_DATASOURCE_USERNAME: beyond
+  SPRING_DATA_REDIS_HOST: redis-service.default.svc.cluster.local
+  # SPRING_DATA_REDIS_HOST: "redis.default.svc.cluster.local"
+  SPRING_DATA_REDIS_PORT: "6379"
   MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: "health,info"
   MANAGEMENT_ENDPOINT_HEALTH_PROBES_ENABLED: "true"

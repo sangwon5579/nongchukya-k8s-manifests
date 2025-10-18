@@ -12,3 +12,5 @@ spec:
               name: backend-config
           - secretRef:
               name: backend-secret
+        args:
+          - "--spring.profiles.active=docker"

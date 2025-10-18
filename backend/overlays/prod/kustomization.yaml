@@ -1,10 +1,8 @@
 resources:
   - ../../base
-
 images:
   - name: sangwon0410/nongchukya-backend
-    newTag: latest
-
+    newTag: "51"
 # 초기엔 blue로 라우팅
 patchesStrategicMerge:
   - patch-service-blue.yaml

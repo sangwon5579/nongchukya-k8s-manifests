@@ -19,14 +19,11 @@ spec:
     spec:
       containers:
       - name: app
-        startupProbe:
-          httpGet:
-            path: /actuator/health
-            port: 8080
-          periodSeconds: 5
-          failureThreshold: 60
         image: sangwon0410/nongchukya-backend:latest
         imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+
         resources:
           requests:
             cpu: "100m"
@@ -34,29 +31,36 @@ spec:
           limits:
             cpu: "500m"
             memory: "512Mi"
-        ports:
-        - containerPort: 8080
+
         envFrom:
-          - configMapRef:
-              name: backend-config
-          - secretRef:
-              name: backend-secret
-        readinessProbe:
+        - configMapRef:
+            name: backend-config
+        - secretRef:
+            name: backend-secret
+
+        # 앱 기동 완료까지 기다리는 프로브
+        startupProbe:
           httpGet:
-            path: /actuator/health/readiness
+            path: /actuator/health/liveness
             port: 8080
           periodSeconds: 5
-          failureThreshold: 6
+          failureThreshold: 60
+          timeoutSeconds: 2
+
+        # 컨테이너가 살아있는지 확인
         livenessProbe:
           httpGet:
             path: /actuator/health/liveness
             port: 8080
+          periodSeconds: 5
+          failureThreshold: 6
+          timeoutSeconds: 2
+
+        # 트래픽 받을 준비가 되었는지 확인
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
           periodSeconds: 10
           failureThreshold: 3
-        syncPolicy:
-          automated:
-            prune: false
-            selfHeal: true
-          syncOptions:
-            - ApplyOutOfSyncOnly=true
-            - RespectIgnoreDifferences=true
+          timeoutSeconds: 2

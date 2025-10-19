@@ -42,3 +42,10 @@ spec:
             port: 80
           initialDelaySeconds: 10
           periodSeconds: 10
+        syncPolicy:
+          automated:
+            prune: false
+            selfHeal: true
+          syncOptions:
+            - ApplyOutOfSyncOnly=true
+            - RespectIgnoreDifferences=true

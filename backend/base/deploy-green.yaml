@@ -53,3 +53,10 @@ spec:
             port: 8080
           periodSeconds: 10
           failureThreshold: 3
+        syncPolicy:
+          automated:
+            prune: false
+            selfHeal: true
+          syncOptions:
+            - ApplyOutOfSyncOnly=true
+            - RespectIgnoreDifferences=true

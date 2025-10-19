@@ -6,17 +6,45 @@ spec:
   template:
     spec:
       containers:
-      - name: app
-        envFrom:
-          - configMapRef:
-              name: backend-config
-          - secretRef:
-              name: backend-secret
-        args:
-          - "--spring.profiles.active=docker"
-        env:
-          - name: SPRING_PROFILES_ACTIVE
-            value: "docker"
-          - name: JAVA_TOOL_OPTIONS
-            value: "-Dspring.profiles.active=docker"
-        
+        - name: app
+          envFrom:
+            - configMapRef:
+                name: backend-config
+            - secretRef:
+                name: backend-secret
+          args:
+            - "--spring.profiles.active=docker"
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "docker"
+            - name: JAVA_TOOL_OPTIONS
+              value: "-Dspring.profiles.active=docker"
+          ports:
+            - containerPort: 8080
+
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 30
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 10
+
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5

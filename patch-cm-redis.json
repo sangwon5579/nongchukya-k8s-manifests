@@ -1,0 +1,7 @@
+{
+  "data": {
+    "SPRING_DATA_REDIS_USERNAME": "default",
+    "SPRING_DATA_REDIS_HOST": "redis-service.default.svc.cluster.local",
+    "SPRING_DATA_REDIS_PORT": "6379"
+  }
+}

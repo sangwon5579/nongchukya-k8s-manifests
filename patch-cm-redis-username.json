@@ -1,0 +1,5 @@
+{
+  "data": {
+    "SPRING_DATA_REDIS_USERNAME": "default"
+  }
+}

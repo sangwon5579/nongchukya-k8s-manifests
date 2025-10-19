@@ -3,10 +3,10 @@ resources:
 images:
   - name: sangwon0410/nongchukya-frontend
     newTag: "75"
-    # patchesStrategicMerge:
-# - patch-service-blue.yaml
-# - patch-replicas-blue-1.yaml
-# - patch-replicas-green-0.yaml
+# patchesStrategicMerge:
+#   - patch-service-blue.yaml
+#   - patch-replicas-blue-1.yaml
+#   - patch-replicas-green-0.yaml
 
 # green으로 전환
 patchesStrategicMerge:

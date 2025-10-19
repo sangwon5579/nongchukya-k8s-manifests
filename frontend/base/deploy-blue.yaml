@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: sangwon0410/nongchukya-frontend:latest  # tag는 overlay에서 바꿈
+        image: sangwon0410/nongchukya-frontend:latest
         imagePullPolicy: IfNotPresent
         resources:
           requests:

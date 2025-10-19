@@ -1,0 +1,4 @@
+[
+  { "op":"add", "path":"/spec/template/spec/containers/0/env/-",
+    "value": { "name":"MANAGEMENT_HEALTH_MAIL_ENABLED", "value":"false" } }
+]

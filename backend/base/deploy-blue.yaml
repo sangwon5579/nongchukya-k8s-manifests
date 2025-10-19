@@ -43,9 +43,10 @@ spec:
           httpGet:
             path: /actuator/health/liveness
             port: 8080
-          periodSeconds: 5
+          initialDelaySeconds: 30 
+          periodSeconds: 10
           failureThreshold: 60
-          timeoutSeconds: 2
+          timeoutSeconds: 5
 
         # 컨테이너가 살아있는지 확인
         livenessProbe:

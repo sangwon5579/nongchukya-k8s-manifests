@@ -7,7 +7,7 @@ resources:
   - backend-config.yaml
 images:
   - name: sangwon0410/nongchukya-backend
-    newTag: "78"
+    newTag: "80"
 patchesStrategicMerge:
   # - patch-deploy-env-green.yaml
   # - patch-service-green.yaml

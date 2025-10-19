@@ -19,6 +19,12 @@ spec:
     spec:
       containers:
       - name: app
+        startupProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          periodSeconds: 5
+          failureThreshold: 60
         image: sangwon0410/nongchukya-backend:latest
         imagePullPolicy: IfNotPresent
         resources:
@@ -39,11 +45,11 @@ spec:
           httpGet:
             path: /actuator/health/readiness
             port: 8080
-          initialDelaySeconds: 60
-          periodSeconds: 10
+          periodSeconds: 5
+          failureThreshold: 6
         livenessProbe:
           httpGet:
             path: /actuator/health/liveness
             port: 8080
-          initialDelaySeconds: 60
           periodSeconds: 10
+          failureThreshold: 3

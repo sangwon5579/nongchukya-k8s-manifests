@@ -2,7 +2,7 @@ resources:
   - ../../base
 images:
   - name: sangwon0410/nongchukya-frontend
-    newTag: "74"
+    newTag: "75"
     # patchesStrategicMerge:
 # - patch-service-blue.yaml
 # - patch-replicas-blue-1.yaml
